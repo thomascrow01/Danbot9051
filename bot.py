@@ -1,6 +1,6 @@
 # Work with Python 3.6
 import discord
-import alone
+from alone import *
 
 
 TOKEN = 'MjcxOTI5OTUxNzk0NjI2NTYx.DYPG5g.FMDge03SUhapL-q2g8tsTEF5ke8'
