@@ -73,6 +73,7 @@ async def on_message(message):
 
     if message.content.startswith('&alone'):
         alone()
+        await client.send_file(message.channel, 'aloneout.png')
 
 @client.event
 async def on_ready():
