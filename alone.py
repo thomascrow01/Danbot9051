@@ -3,7 +3,7 @@ import datetime
 import calendar
 now = datetime.datetime.now()
 
-image = Image.open('alone blank.png')
+image = Image.open('D:/Joseph/Pictures/alone blank.png')
 font_type = ImageFont.truetype("segoeprb.ttf", 16)
 draw = ImageDraw.Draw(image)
 draw.text(xy=(355,70),text="Alone on a",font=font_type)
