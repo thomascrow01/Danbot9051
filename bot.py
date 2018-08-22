@@ -94,7 +94,18 @@ async def on_message(message):
             image.save("juiceout.png") 
         juice(str(message.content[7:]))
         await client.send_file(message.channel, 'juiceout.png')
-
+    if message.content.startswith(prefix+'dab'):
+        Wdab=140
+        def dab(dabname):
+            image = Image.open('dabblank.jpg')
+            font_type = ImageFont.truetype("segoeprb.ttf", 30)
+            draw = ImageDraw.Draw(image)
+            widthdab = font_type.getsize(dabname)[0]
+            print(widthdab)
+            draw.text((675+(Wdab-widthdab)/2, 48), text=dabname, font=font_type, fill=(0,0,0))
+            image.save("dabout.png") 
+        dab(str(message.content[4:])+',')
+        await client.send_file(message.channel, 'dabout.png')
 @client.event
 async def on_ready():
     print('Logged in as')
