@@ -2,6 +2,7 @@
 import discord
 from alone import *
 from PIL import Image, ImageDraw, ImageFont
+import random
 
 tokenfile = open("C:\\token.txt", "r")
 TOKEN = tokenfile.read()
@@ -75,7 +76,11 @@ async def on_message(message):
     if message.content.startswith(prefix+'alone'):
         alone()
         await client.send_file(message.channel, 'aloneout.png')
-
+    if message.content.startswith(prefix+'nagatoro'):
+        face = random.randint(1,436)
+        faceimage = 'nagatoro/('+str(face)+').png'
+        await client.send_file(message.channel, str(faceimage))
+        
     if message.content.startswith(prefix+'juice'):
         #juice(str(message.content[5:]))
 
@@ -142,6 +147,8 @@ async def on_message(message):
         elif message.content.startswith('&codec otacon'):
             codec(str(message.content[14:]))
             await client.send_file(message.channel, 'codecout.png')
+
+        
 @client.event
 async def on_ready():
     print('Logged in as')
