@@ -108,6 +108,25 @@ async def on_message(message):
             image.save("dabout.png") 
         dab(str(message.content[4:])+',')
         await client.send_file(message.channel, 'dabout.png')
+    if message.content.startswith('&codec'):
+        W=140
+        def codec(codectext):
+            if message.content.startswith('&codec naomi'):
+                image = Image.open('naomicodec.jpg')
+            elif message.content.startswith('&codec colonel'):
+                image = Image.open('colonelcodec.jpg')
+            font_type = ImageFont.truetype("arial.ttf", 50)
+            draw = ImageDraw.Draw(image)
+            width = font_type.getsize(codectext)[0]
+            print(width)
+            draw.text((575+(W-width)/2, 440), text=codectext, font=font_type, fill=(255,255,255))
+            image.save("codecout.png") 
+        if message.content.startswith('&codec naomi'):
+            codec(str(message.content[13:]))
+            await client.send_file(message.channel, 'codecout.png')
+        elif message.content.startswith('&codec colonel'):
+            codec(str(message.content[15:]))
+            await client.send_file(message.channel, 'codecout.png')
 @client.event
 async def on_ready():
     print('Logged in as')
