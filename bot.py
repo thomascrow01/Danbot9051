@@ -115,6 +115,12 @@ async def on_message(message):
                 image = Image.open('naomicodec.jpg')
             elif message.content.startswith('&codec colonel'):
                 image = Image.open('colonelcodec.jpg')
+            elif message.content.startswith('&codec miller'):
+                image = Image.open('millercodec.jpg')
+            elif message.content.startswith('&codec meryl'):
+                image = Image.open('merylcodec.jpg')
+            elif message.content.startswith('&codec otacon'):
+                image = Image.open('otaconcodec.jpg')
             font_type = ImageFont.truetype("arial.ttf", 50)
             draw = ImageDraw.Draw(image)
             width = font_type.getsize(codectext)[0]
@@ -126,6 +132,15 @@ async def on_message(message):
             await client.send_file(message.channel, 'codecout.png')
         elif message.content.startswith('&codec colonel'):
             codec(str(message.content[15:]))
+            await client.send_file(message.channel, 'codecout.png')
+        elif message.content.startswith('&codec miller'):
+            codec(str(message.content[14:]))
+            await client.send_file(message.channel, 'codecout.png')
+        elif message.content.startswith('&codec meryl'):
+            codec(str(message.content[13:]))
+            await client.send_file(message.channel, 'codecout.png')
+        elif message.content.startswith('&codec otacon'):
+            codec(str(message.content[14:]))
             await client.send_file(message.channel, 'codecout.png')
 @client.event
 async def on_ready():
