@@ -2,10 +2,12 @@
 import discord
 from alone import *
 from PIL import Image, ImageDraw, ImageFont
-TOKEN = 'MjcxOTI5OTUxNzk0NjI2NTYx.DYPG5g.FMDge03SUhapL-q2g8tsTEF5ke8'
+
+tokenfile = open("C:\\token.txt", "r")
+TOKEN = tokenfile.read()
 
 client = discord.Client()
-
+print(tokenfile.read())
 prefix = '&'
 
 file = open('msgs.txt','r')
