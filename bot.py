@@ -1,5 +1,7 @@
 # Work with Python 3.6
 import discord
+import alone
+
 
 TOKEN = 'MjcxOTI5OTUxNzk0NjI2NTYx.DYPG5g.FMDge03SUhapL-q2g8tsTEF5ke8'
 
@@ -62,7 +64,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         
     if message.content.startswith(prefix + 'fc'): 
-        msg = ". \n 0361-9574-6041 dan \n 3153-9628-9995 may \n  0920-5030-1151 joe \n 1306-4931-3543 gin \n 3866-9206-5223 ang \n 4124-5082-9752 aki \n1564-3621-7080 tom ashoo8 \n 1521-7977-4558 tom bleach".format(message)
+        msg = "0361-9574-6041 dan\n3153-9628-9995 may\n0920-5030-1151 joe\n1306-4931-3543 gin\n3866-9206-5223 ang\n4124-5082-9752 aki \n1564-3621-7080 tom ashoo8 \n1521-7977-4558 tom bleach".format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!hello'):
