@@ -13,7 +13,7 @@ def alone():
     if now.hour >=12 and now.hour < 18:
         draw.text(xy=(340,120),text="afternoon?",font=font_type)
     if now.hour >=18 and now.hour < 24:
-        draw.text(xy=(355,120),text="night?",font=font_type)
+        draw.text(xy=(365,120),text="night?",font=font_type)
     #image.show()
     image.save("aloneout.png")
 
