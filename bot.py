@@ -1,8 +1,7 @@
 # Work with Python 3.6
 import discord
 from alone import *
-
-
+from PIL import Image, ImageDraw, ImageFont
 TOKEN = 'MjcxOTI5OTUxNzk0NjI2NTYx.DYPG5g.FMDge03SUhapL-q2g8tsTEF5ke8'
 
 client = discord.Client()
@@ -74,6 +73,27 @@ async def on_message(message):
     if message.content.startswith(prefix+'alone'):
         alone()
         await client.send_file(message.channel, 'aloneout.png')
+
+    if message.content.startswith(prefix+'juice'):
+        #juice(str(message.content[5:]))
+
+        W = 140
+        Ws = 65
+        def juice(juicebox):
+            image = Image.open('juiceblank.png')
+            font_type_s = ImageFont.truetype("segoeprb.ttf", 16)
+            font_type_l = ImageFont.truetype("segoeprb.ttf", 30)
+            draw = ImageDraw.Draw(image)
+            widths = font_type_s.getsize(juicebox)[0]
+            draw.text((188+(Ws-widths)/2,360),text=juicebox,font=font_type_s)
+            width = font_type_l.getsize(juicebox)[0]
+            w = draw.textsize(juicebox)
+            print(width)
+            print(widths)
+            draw.text((550+(W-width)/2, 325), juicebox, font=font_type_l)
+            image.save("juiceout.png") 
+        juice(str(message.content[7:]))
+        await client.send_file(message.channel, 'juiceout.png')
 
 @client.event
 async def on_ready():
