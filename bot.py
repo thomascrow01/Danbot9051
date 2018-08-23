@@ -114,27 +114,29 @@ async def on_message(message):
         dab(str(message.content[4:])+',')
         await client.send_file(message.channel, 'dabout.png')
     if message.content.startswith('&codec'):
-        W=1280
+        W=640
         def codec(codectext):
             if message.content.startswith('&codec naomi'):
-                image = Image.open('naomicodec.jpg')
+                image = Image.open('naomicodec.png')
             elif message.content.startswith('&codec colonel'):
-                image = Image.open('colonelcodec.jpg')
+                image = Image.open('colonelcodec.png')
             elif message.content.startswith('&codec miller'):
-                image = Image.open('millercodec.jpg')
+                image = Image.open('millercodec.png')
             elif message.content.startswith('&codec meryl'):
-                image = Image.open('merylcodec.jpg')
+                image = Image.open('merylcodec.png')
             elif message.content.startswith('&codec otacon'):
                 image = Image.open('otaconcodec.jpg')
-            font_type = ImageFont.truetype("arial.ttf", 50)
+            elif message.content.startswith('&codec meiling'):
+                image = Image.open('meilingcodec.png')
+            font_type = ImageFont.truetype("arial.ttf", 25)
             (width,height) = font_type.getsize(codectext)
             draw = ImageDraw.Draw(image)
             textprint = textwrap.fill(codectext, width=45)
             print(width)
             if len(textprint) < 45:
-                draw.text(((W-width)/2, 440), text=textprint, font=font_type, fill=(255,255,255))
+                draw.text(((W-width)/2, 280), text=textprint, font=font_type, fill=(255,255,255))
             else:
-                draw.text(((W-1000)/2, 440), text=textprint, font=font_type, fill=(255,255,255))
+                draw.text(((W-500)/2, 280), text=textprint, font=font_type, fill=(255,255,255))
             image.save("codecout.png") 
         if message.content.startswith('&codec naomi'):
             codec(str(message.content[13:]))
@@ -151,7 +153,23 @@ async def on_message(message):
         elif message.content.startswith('&codec otacon'):
             codec(str(message.content[14:]))
             await client.send_file(message.channel, 'codecout.png')
-
+        elif message.content.startswith('&codec meiling'):
+            codec(str(message.content[15:]))
+            await client.send_file(message.channel, 'codecout.png')
+    if message.content.startswith('&splatoon'):
+        W=800
+        def splatoon(splatoontext):
+            toprint = textwrap.fill(splatoontext, width=60)
+            image = Image.open('marietext.png')
+            font_type = ImageFont.truetype("Splatoon2.otf", 30)
+            draw = ImageDraw.Draw(image)
+            width = font_type.getsize(splatoontext)[0]
+            draw.text((150, 70), text=toprint, font=font_type, fill=(255,255,255))
+            #image.show()
+            image.save("splatoonout.png")
+        if message.content.startswith('&splatoon marie'):
+            splatoon(str(message.content[16:]))
+            await client.send_file(message.channel, 'splatoonout.png')
         
 @client.event
 async def on_ready():
