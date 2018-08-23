@@ -3,7 +3,7 @@ import discord
 from alone import *
 from PIL import Image, ImageDraw, ImageFont
 import random
-
+import textwrap
 tokenfile = open("C:\\token.txt", "r")
 TOKEN = tokenfile.read()
 
@@ -114,7 +114,7 @@ async def on_message(message):
         dab(str(message.content[4:])+',')
         await client.send_file(message.channel, 'dabout.png')
     if message.content.startswith('&codec'):
-        W=140
+        W=1280
         def codec(codectext):
             if message.content.startswith('&codec naomi'):
                 image = Image.open('naomicodec.jpg')
@@ -127,10 +127,14 @@ async def on_message(message):
             elif message.content.startswith('&codec otacon'):
                 image = Image.open('otaconcodec.jpg')
             font_type = ImageFont.truetype("arial.ttf", 50)
+            (width,height) = font_type.getsize(codectext)
             draw = ImageDraw.Draw(image)
-            width = font_type.getsize(codectext)[0]
+            textprint = textwrap.fill(codectext, width=45)
             print(width)
-            draw.text((575+(W-width)/2, 440), text=codectext, font=font_type, fill=(255,255,255))
+            if len(textprint) < 45:
+                draw.text(((W-width)/2, 440), text=textprint, font=font_type, fill=(255,255,255))
+            else:
+                draw.text(((W-1000)/2, 440), text=textprint, font=font_type, fill=(255,255,255))
             image.save("codecout.png") 
         if message.content.startswith('&codec naomi'):
             codec(str(message.content[13:]))
