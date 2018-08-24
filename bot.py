@@ -56,13 +56,15 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         
     if message.content == (prefix + 'lewd'):
-        msg = "https://cdn.discordapp.com/attachments/436028618485792768/450206367819497482/hinokalewd.png".format(message)
-        await client.send_message(message.channel, msg)
+        await client.send_file(message.channel, 'hinokalewd.png')
         
     #if message.content == ('succ'):
         #msg = 'S U C C \nU \nC \nC'.format(message)
         #await client.send_message(message.channel, msg)
-    
+
+    if message.content == ('harry wallace help'):
+        msg = 'right so\n&fc - friend codes for 3DS\nritter - its ritter\'s face\nmarie - marie copypasta\nchelsea - chelsea copypasta\nlollie - cotton\nlewd - lewd\nalone - alone on a X Y?\njuice - &juice [text]\ndab - &dab [text]\ncodec - &codec [name] [text]\n\tcurrent portraits:\n\t\tcolonel\n\t\tnaomi\n\t\tmei ling\n\t\tmeryl\n\t\tmiller'.format(message)
+        await client.send_message(message.channel, msg)
 
         
     if message.content.startswith(prefix + 'fc'): 
@@ -160,7 +162,10 @@ async def on_message(message):
         W=800
         def splatoon(splatoontext):
             toprint = textwrap.fill(splatoontext, width=60)
-            image = Image.open('marietext.png')
+            if message.content.startswith('&splatoon marie'):
+                image = Image.open('marietext.png')
+            elif message.content.startswith('&splatoon callie'):
+                image = Image.open('callietext.png')
             font_type = ImageFont.truetype("Splatoon2.otf", 30)
             draw = ImageDraw.Draw(image)
             width = font_type.getsize(splatoontext)[0]
@@ -169,6 +174,9 @@ async def on_message(message):
             image.save("splatoonout.png")
         if message.content.startswith('&splatoon marie'):
             splatoon(str(message.content[16:]))
+            await client.send_file(message.channel, 'splatoonout.png')
+        elif message.content.startswith('&splatoon callie'):
+            splatoon(str(message.content[17:]))
             await client.send_file(message.channel, 'splatoonout.png')
         
 @client.event
