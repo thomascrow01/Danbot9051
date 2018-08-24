@@ -127,7 +127,7 @@ async def on_message(message):
             elif message.content.startswith('&codec meryl'):
                 image = Image.open('merylcodec.png')
             elif message.content.startswith('&codec otacon'):
-                image = Image.open('otaconcodec.jpg')
+                image = Image.open('otaconcodec.png')
             elif message.content.startswith('&codec meiling'):
                 image = Image.open('meilingcodec.png')
             font_type = ImageFont.truetype("arial.ttf", 25)
